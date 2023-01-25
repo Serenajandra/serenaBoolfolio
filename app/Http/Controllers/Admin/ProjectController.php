@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\project;
 use Illuminate\Http\Request;
 
 class ProjectController extends Controller
@@ -14,8 +15,8 @@ class ProjectController extends Controller
      */
     public function index()
     {
-        // return view('admin.index');
-        return view('admin.projects.index');
+        $projects = project::all();
+        return view('admin.projects.index', compact('projects'));
     }
 
     /**
