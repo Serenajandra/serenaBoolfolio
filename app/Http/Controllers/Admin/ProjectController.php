@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Project;
+use GuzzleHttp\Psr7\Message;
 use Illuminate\Http\Request;
 
 class ProjectController extends Controller
@@ -42,7 +43,7 @@ class ProjectController extends Controller
         $newProject = new Project();
         $newProject->fill($form_data);
         $newProject->save();
-        return redirect()->route('admin.projects.index');
+        return redirect()->route('admin.projects.index')->with('message', 'Il progetto è stato creato con successo.');
     }
 
 
@@ -78,7 +79,7 @@ class ProjectController extends Controller
      */
     public function update(Request $request, $id)
     {
-        dd($request);
+        dd($request->all());
     }
 
     /**
