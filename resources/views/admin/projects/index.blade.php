@@ -35,7 +35,15 @@
                         <td>
                             <a class="btn btn-warning" href="{{ route('admin.projects.show', $project->id) }}">Dettagli</a>
                             <a class="btn btn-dark" href="{{ route('admin.projects.edit', $project->id) }}">Modifica</a>
-                            <a class="btn btn-danger" href="">Cancella</a>
+
+                            <form action="{{ route('admin.projects.destroy', $project->id) }}" method="POST">
+                                @csrf
+                                @method('DELETE')
+                                <button class="btn btn-danger" type="submit">
+                                    Cancella
+                                </button>
+                            </form>
+
                         </td>
                     </tr>
                 @endforeach

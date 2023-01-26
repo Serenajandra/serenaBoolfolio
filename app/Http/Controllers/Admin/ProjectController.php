@@ -83,7 +83,7 @@ class ProjectController extends Controller
         $project->update($form_data);
         return redirect()->route('admin.projects.index')->with(
             'message',
-            "$project->title è stato aggiornato con successo"
+            "$project->title è stato aggiornato con successo."
         );
     }
 
@@ -95,5 +95,7 @@ class ProjectController extends Controller
      */
     public function destroy(Project $project)
     {
+        $project->delete();
+        return redirect()->route('admin.projects.index')->with('message', "$project->title è stato cancellato.");
     }
 }
