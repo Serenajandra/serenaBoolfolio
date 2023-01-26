@@ -37,8 +37,15 @@ class ProjectController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // dd($request->all());
+        $form_data = $request->all();
+        $newProject = new Project();
+        $newProject->fill($form_data);
+        $newProject->save();
+        return redirect()->route('admin.projects.index');
     }
+
+
 
     /**
      * Display the specified resource.
