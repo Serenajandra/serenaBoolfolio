@@ -77,9 +77,14 @@ class ProjectController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Project $project)
     {
-        dd($request->all());
+        $form_data = $request->all();
+        $project->update($form_data);
+        return redirect()->route('admin.projects.index')->with(
+            'message',
+            "$project->title è stato aggiornato con successo"
+        );
     }
 
     /**
