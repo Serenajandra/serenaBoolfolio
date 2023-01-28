@@ -2,9 +2,16 @@
 @section('content')
     <h2 class="text-center">Crea un nuovo progetto</h2>
     <div class="container">
-        {{-- @if (any->errors()) --}}
+        @if ($errors->any())
+            <div class="alert alert-danger">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
 
-        {{-- @endif --}}
         <form action="{{ route('admin.projects.store') }}" method="POST" enctype="multipart/form-data">
             @csrf
             <div class="my-3 form-group">
