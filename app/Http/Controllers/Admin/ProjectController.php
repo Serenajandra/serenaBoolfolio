@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreProjectRequest;
+use App\Http\Requests\UpdateProgectRequest;
 use App\Models\Project;
 use GuzzleHttp\Psr7\Message;
 use Illuminate\Http\Request;
@@ -76,9 +77,9 @@ class ProjectController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Project $project)
+    public function update(UpdateProgectRequest $request, Project $project)
     {
-        $form_data = $request->all();
+        $form_data = $request->validated();
         $project->update($form_data);
         return redirect()->route('admin.projects.index')->with(
             'message',

@@ -1,6 +1,18 @@
 @extends('layouts.admin')
 @section('content')
     <h2 class="text-center mt-4">Modifica il progetto</h2>
+    <div class="container">
+        @if ($errors->any())
+            <div class="alert alert-danger">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
+    </div>
+
 
     <form class="container" action="{{ route('admin.projects.update', $project->id) }}" method="POST">
         @csrf
